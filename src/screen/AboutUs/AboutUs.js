@@ -20,7 +20,7 @@ const AboutUs = () => {
     <Container>
       <Wrapper>
         <img
-          alt=""
+          alt="App"
           src={AppIcon}
           style={{ height: '20em', width: '20em', margin: '0px 16px' }}
         />
@@ -111,7 +111,7 @@ const AboutUs = () => {
             <img
               src={GithubIcon}
               style={{ height: '3em', width: '3em' }}
-              alt=""
+              alt="Github"
             />
           </ListItemIcon>
           <ListItemText primary="Fork us on Github" />
@@ -135,7 +135,7 @@ const AboutUs = () => {
             <img 
               src={FacebookIcon}
               style={{ height: '3em', width: '3em' }} 
-              alt="" 
+              alt="Facebook" 
             />
           </ListItemIcon>
           <ListItemText primary="Like us on Facebook" />
@@ -159,7 +159,7 @@ const AboutUs = () => {
             <img 
               src={TwitterIcon}
               style={{ height: '3em', width: '3em' }} 
-              alt=""  
+              alt="Twitter"  
             />
           </ListItemIcon>
           <ListItemText primary="Follow us on Twitter" />
@@ -183,7 +183,7 @@ const AboutUs = () => {
             <img
               src={YoutubeIcon}
               style={{ height: '3em', width: '3em' }}
-              alt="" 
+              alt="Youtube" 
             />
           </ListItemIcon>
           <ListItemText primary="Watch us on Youtube" />
