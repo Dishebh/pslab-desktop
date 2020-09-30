@@ -58,7 +58,7 @@ const loadBalancer = window.require('electron-load-balancer');
 
 const styles = theme => ({
   iconButton: {
-    color: theme.pallet.common.white,
+    color: theme.palette.common.white,
   },
   list: {
     width: 250,
@@ -329,6 +329,7 @@ const Appshell = ({
             }}
           >
             <img
+              alt="App"
               src={AppIcon}
               style={{
                 height: '6.5em',
@@ -469,11 +470,13 @@ const Appshell = ({
               <IconButton className={classes.iconButton} size="medium">
                 {device.isConnected ? (
                   <img
+                    alt="Connected"
                     src={ConnectedIcon}
                     style={{ height: '20px', width: '20px' }}
                   />
                 ) : (
                   <img
+                    alt="Disconnected"
                     src={DisconnectedIcon}
                     style={{ height: '20px', width: '20px' }}
                   />
@@ -502,12 +505,7 @@ const mapDispatchToProps = dispatch => ({
 });
 
 export default withRouter(
-  withTheme()(
-    withStyles(styles)(
-      connect(
-        mapStateToProps,
-        mapDispatchToProps,
-      )(Appshell),
-    ),
+  withTheme(
+    withStyles(styles)(connect(mapStateToProps, mapDispatchToProps)(Appshell)),
   ),
 );

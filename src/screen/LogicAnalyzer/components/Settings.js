@@ -7,8 +7,7 @@ import {
 } from './Settings.styles';
 import NumberParameter from './NumberParameter';
 import ChannelParameters from './ChannelParameters';
-import AnalysisParameters from './AnalysisParameters';
-
+import TimeParameters from './TimeParameters';
 const Settings = ({
   numberOfChannels,
   channel1Map,
@@ -31,6 +30,10 @@ const Settings = ({
   changeTimeMeasureTriggerType,
   changeTimeMeasureWrite,
   changeTimeout,
+  captureTimeListLength,
+  captureTimeIndex,
+  captureTime,
+  onChangeCaptureTimeIndex,
 }) => (
   <SettingsContainer>
     <FixedWrapper>
@@ -51,6 +54,12 @@ const Settings = ({
           trigger4Type={trigger4Type}
           changeChannelMap={changeChannelMap}
           changeTriggerType={changeTriggerType}
+        />
+        <TimeParameters
+          captureTimeListLength={captureTimeListLength}
+          captureTimeIndex={captureTimeIndex}
+          captureTime={captureTime}
+          onChangeCaptureTimeIndex={onChangeCaptureTimeIndex}
         />
         {/* <AnalysisParameters
           timeMeasureChannel1={timeMeasureChannel1}

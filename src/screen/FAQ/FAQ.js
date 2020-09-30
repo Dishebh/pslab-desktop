@@ -145,8 +145,8 @@ const FAQ = () => {
           </ExpansionPanelSummary>
           <ExpansionPanelDetails>
             <Typography>
-              A: Right now, we don't having an option to make and save custom
-              experiments. But we will implement it soon.
+              A: Right now, we don&apos;t having an option to make and save
+              custom experiments. But we will implement it soon.
             </Typography>
           </ExpansionPanelDetails>
         </ExpansionPanel>
@@ -436,7 +436,10 @@ const FAQ = () => {
               collected. Future versions of the device will come with a SD card
               to store the data locally as well. At the moment there are still
               limits to using this feature, but we are continuously working on
-              it 🙂
+              it{' '}
+              <span role="img" aria-label="smiley">
+                🙂
+              </span>
             </Typography>
           </ExpansionPanelDetails>
         </ExpansionPanel>

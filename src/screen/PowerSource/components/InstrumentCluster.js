@@ -52,7 +52,7 @@ const Settings = props => {
   };
 
   const inputCheck = value => {
-    let regex = /^(?:\-)?[0-9]*(\.[0-9]{0,2})?$/;
+    let regex = /^(?:)?[0-9]*(\.[0-9]{0,2})?$/;
     return regex.test(value);
   };
 
@@ -319,9 +319,4 @@ const mapDispatchToProps = dispatch => ({
   ),
 });
 
-export default withStyles(styles)(
-  connect(
-    null,
-    mapDispatchToProps,
-  )(Settings),
-);
+export default withStyles(styles)(connect(null, mapDispatchToProps)(Settings));

@@ -4,20 +4,26 @@ const url = require('url');
 const { ipcMain } = require('electron');
 const loadBalancer = require('electron-load-balancer');
 
-// if (process.env.DEV) {
-//   const {
-//     default: installExtension,
-//     REDUX_DEVTOOLS,
-//     REACT_DEVELOPER_TOOLS,
-//   } = require('electron-devtools-installer');
-
-//   installExtension(REDUX_DEVTOOLS);
-//   installExtension(REACT_DEVELOPER_TOOLS);
-// }
-
 const { app } = electron;
 const { BrowserWindow } = electron;
 const nativeImage = electron.nativeImage;
+
+if (process.env.DEV) {
+  const {
+    default: installExtension,
+    REDUX_DEVTOOLS,
+    REACT_DEVELOPER_TOOLS,
+  } = require('electron-devtools-installer');
+
+  app.whenReady().then(() => {
+    installExtension(REDUX_DEVTOOLS).then(name =>
+      console.log(`Added Extension:  ${name}`),
+    );
+    installExtension(REACT_DEVELOPER_TOOLS).then(name =>
+      console.log(`Added Extension:  ${name}`),
+    );
+  });
+}
 
 const icon = nativeImage.createFromPath(path.join(__dirname, 'app_icon.png'));
 let mainWindow;
@@ -35,6 +41,7 @@ function createWindow() {
     icon,
     webPreferences: {
       nodeIntegration: true,
+      enableRemoteModule: true,
     },
     minWidth: 500,
     minHeight: 300,
@@ -67,10 +74,15 @@ app.on('activate', () => {
 
 /* ----------------------------------- Custom code starts here ------------------------------------- */
 
-loadBalancer.register(ipcMain, {
-  linker: '/background_tasks/linker.html',
-  playback: '/background_tasks/playback.html',
-});
+loadBalancer.register(
+  ipcMain,
+  {
+    linker: '/background_tasks/linker.html',
+    playback: '/background_tasks/playback.html',
+  },
+  // Set to true to unhide the window, useful for IPC debugging
+  { debug: false },
+);
 
 ipcMain.on('OSC_VOLTAGE_DATA', (event, args) => {
   mainWindow.webContents.send('OSC_VOLTAGE_DATA', args);
@@ -132,4 +144,8 @@ ipcMain.on('FETCH_ROB_ARM', (event, args) => {
 
 ipcMain.on('FETCH_LA', (event, args) => {
   mainWindow.webContents.send('FETCH_LA', args);
+});
+
+ipcMain.on('SENSORS_SCAN', (event, args) => {
+  mainWindow.webContents.send('SENSORS_SCAN', args);
 });

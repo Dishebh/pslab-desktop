@@ -9,6 +9,7 @@ const DeviceScreen = ({ isConnected, deviceInformation }) => {
     <Container>
       <Wrapper>
         <img
+          alt=""
           src={ConnectedImage}
           style={{
             height: '104px',
@@ -52,6 +53,7 @@ const DeviceScreen = ({ isConnected, deviceInformation }) => {
     <Container>
       <Wrapper>
         <img
+          alt=""
           src={DisconnectedImage}
           style={{
             height: '104px',
@@ -123,7 +125,4 @@ const mapStateToProps = state => ({
   deviceInformation: state.app.device.deviceInformation,
 });
 
-export default connect(
-  mapStateToProps,
-  null,
-)(DeviceScreen);
+export default connect(mapStateToProps, null)(DeviceScreen);

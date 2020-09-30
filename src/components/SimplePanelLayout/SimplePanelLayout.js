@@ -1,9 +1,5 @@
 import React from 'react';
-import {
-  ThickBar,
-  LayoutWrapper,
-  LayoutContainer,
-} from './SimplePanelLayout.styles';
+import { LayoutWrapper, LayoutContainer } from './SimplePanelLayout.styles';
 
 const SimplePanelLayout = props => {
   const { panel } = props;

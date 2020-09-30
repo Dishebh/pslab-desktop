@@ -1,14 +1,13 @@
 {
     "name": "pslab",
     "description": "A desktop interface for the Pocket Science Lab open-harware device",
-    "version": "0.1.0",
+    "version": "2.1.0",
     "private": true,
     "dependencies": {
-        "@material-ui/core": "^3.9.3",
-        "@material-ui/icons": "^3.0.2",
-        "@material-ui/lab": "^3.0.0-alpha.30",
+        "@material-ui/core": "^4.10.2",
+        "@material-ui/icons": "^4.9.1",
         "chokidar": "^3.0.1",
-        "electron-load-balancer": "^2.0.0",
+        "electron-load-balancer": "^3.0.0",
         "electron-log": "^3.0.5",
         "python-shell": "^1.0.7",
         "react": "^16.8.6",
@@ -23,14 +22,14 @@
         "recharts": "^1.5.0",
         "redux": "^4.0.1",
         "redux-thunk": "^2.3.0",
-        "styled-components": "^4.2.0",
-        "typescript": "^3.4.5"
+        "styled-components": "^4.2.0"
     },
     "scripts": {
         "react-start": "BROWSER=NONE react-scripts start",
         "electron-start": "DEV=1 electron .",
-        "start": "concurrently \"react-scripts start BROWSER=none\" \"wait-on http://localhost:3000 && electron .\"",
+        "start": "concurrently 'npm run react-start' 'wait-on http://localhost:3000/ && npm run electron-start'",
         "react-build": "react-scripts build",
+        "pack": "electron-builder --dir -c.extraMetadata.main=build/electron.js",
         "electron-build-linux": "electron-builder --linux -c.extraMetadata.main=build/electron.js",
         "electron-build-windows": "electron-builder --win -c.extraMetadata.main=build/electron.js",
         "electron-build-mac": "electron-builder --mac -c.extraMetadata.main=build/electron.js",
@@ -41,6 +40,7 @@
         "test": "react-scripts test",
         "eject": "react-scripts eject",
         "lint": "eslint src",
+        "fmt": "prettier --write 'src/**/*.js'",
         "precommit": "lint-staged"
     },
     "lint-staged": {
@@ -64,10 +64,9 @@
         "babel-eslint": "^10.0.1",
         "concurrently": "^5.0.0",
         "devtron": "^1.4.0",
-        "electron": "^4.1.4",
+        "electron": "^9.0.4",
         "electron-builder": "^21.1.5",
-        "electron-devtools-installer": "^2.2.4",
-        "electron-react-devtools": "^0.5.3",
+        "electron-devtools-installer": "^3.0.0",
         "enzyme": "^3.9.0",
         "enzyme-adapter-react-16": "^1.12.1",
         "eslint": "^5.16.0",
@@ -77,7 +76,7 @@
         "eslint-plugin-jsx": "0.0.2",
         "eslint-plugin-jsx-a11y": "^6.2.1",
         "eslint-plugin-prettier": "^3.0.1",
-        "eslint-plugin-react": "^7.12.4",
+        "eslint-plugin-react": "^7.20.0",
         "husky": "^1.3.1",
         "lint-staged": "^8.1.5",
         "prettier": "^1.17.0",
@@ -96,7 +95,7 @@
     "build": {
         "appId": "FOSSASIA-PSLAB",
         "productName": "PSLab",
-        "copyright": "Copyright © 2019 FOSSASIA",
+        "copyright": "Copyright © 2019-2020 FOSSASIA",
         "asar": false,
         "linux": {
             "target": [
@@ -112,7 +111,7 @@
             "target": [
                 "nsis"
             ],
-            "legalTrademarks": "Copyright © 2019 FOSSASIA",
+            "legalTrademarks": "Copyright © 2019-2020 FOSSASIA",
             "signingHashAlgorithms": [
                 "sha1",
                 "sha256"
